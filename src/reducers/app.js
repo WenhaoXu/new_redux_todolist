@@ -1,3 +1,5 @@
+import * as _ from 'ramda'
+
 export default (state = {currentPage: 0, items: []}, action) => {
 
     let payload = action.payload;
@@ -33,12 +35,12 @@ export default (state = {currentPage: 0, items: []}, action) => {
                 items: [...state.items, payload]
             };
         case "DELETE_ITEM":
-            let newItemList=state.items.filter(item=>
-                item.id!=payload
-            )
-            return{
+            return {
                 currentPage: state.currentPage,
-                items:newItemList
+                items: _.reject(_.pipe(
+                    _.prop('id'),
+                    _.equals(payload)
+                ))(state.items)
             };
         default:
             return state;

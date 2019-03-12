@@ -52,7 +52,7 @@ class App extends Component {
                                                             checked={item.finished}
                                                             onClick={() => handleItemClick(item.id, item.title, !item.finished)}/>
                                                         <span style={{position:'relative',bottom:'5px',left:'10px',fontSize:'15px',color:"#434343"}}>{item.title}</span>
-                                                        <Button  onClick={() => handleItemDelete(item.id)}>delete</Button>
+                                                        <Button id={'delete'} onClick={() => handleItemDelete(item.id)}>delete</Button>
                                                     </Item.Content>
                                                 </Item>)
                                     }
